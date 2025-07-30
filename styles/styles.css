@@ -1,0 +1,67 @@
+.chatBotton{
+    background-color: #1a3854;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+.hide{
+    overflow: hidden;
+}
+
+.navBar {
+  height: 40px; /* أو أي ارتفاع يناسبك */
+  align-items: center;
+}
+
+body{
+        margin: 0;
+        
+        background: radial-gradient(circle at center, #e6f3fc 0%, #c2def3 50%, #a3cde6 100%);
+        background-size: cover;
+        
+}
+
+.no-bullets {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul{
+    cursor: pointer;
+}
+.egyAir{
+    width: 35%;
+}
+.logo {
+  max-height: 400px;
+  width: auto;
+  display: block;
+  line-height: 1;
+  margin-top: -5%;
+}
+.bot{
+    max-height: 400x !important;
+    
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto; /* بدلاً من 80vh */
+  min-height: 60vh; /* أو أقل حسب ما تحب */
+}
+.description{
+    font-weight: 700;
+    font-size: large;
+}
+
+.bp-widget-button {
+    display: none !important;
+  }
+

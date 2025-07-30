@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css" />
+
+  <title>AirBot</title>
+
+  <!-- ✅ Botpress Script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+
+  <!-- ✅ Style to hide scroll initially -->
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden; /* ❌ يمنع السكرول في البداية */
+    }
+
+    #webchat .bpWebchat {
+      position: unset;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      max-width: 100%;
+    }
+
+    #webchat .bpFab {
+      display: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <!-- ✅ Navbar -->
+    <div class="navBar d-flex justify-content-around mt-4">
+      <div class="imageSection">
+        <img src="./images/egyptair-logo-RyABB3Dj-removebg-preview.png" alt="image" class="egyAir" />
+      </div>
+      <div class="menu my-auto">
+        <ul class="list-unstyled d-flex justify-content-around mb-0">
+          <a href="#" class="text-decoration-none text-body"><li class="me-2">الرئيسية</li></a>
+          <a href="#" class="text-decoration-none text-body"><li class="me-2">الخدمات</li></a>
+          <a href="#" class="text-decoration-none text-body"><li class="me-2">التواصل</li></a>
+          <a href="./indexar.html" class="text-decoration-none text-body"><i class="fa-solid fa-globe"></i><li class="me-2">العربية</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ✅ Main Section -->
+    <div class="main text-center mt-5">
+      <div class="logo">
+        <img src="./images/logo.png" alt="img" class="bot w-100" />
+      </div>
+
+      <p class="description">اير بوت هو نموذج ذكاء اصطناعي مصمم للمساعدة و الفحص في المشاكل الفينة التي تتعلق بالجهاز الخاص بك</p>
+
+      <!-- ✅ Chat Button -->
+      <button id="chatNowBtn" type="button" class="btn btn-primary chatBotton">تحدث الان</button>
+    </div>
+
+    <!-- ✅ Botpress Webchat Container -->
+    <div id="webchat-container" style="width: 100%; height: 100vh; margin-top: 50px; display: none;">
+      <div id="webchat" style="width: 500px; height: 500px; margin: 0 auto;"></div>
+    </div>
+  </section>
+
+  <!-- ✅ Botpress Init Script -->
+  <script>
+    // Initial Botpress Init (doesn't open it immediately)
+    window.botpress.init({
+      botId: "958c8eb6-7cd3-445c-b4ce-b6a909581660",
+      configuration: {
+        version: "v1",
+        botName: "AirBot",
+        botAvatar: "https://files.bpcontent.cloud/2025/07/30/15/20250730152217-X99MV5TZ.png",
+        botDescription: "اهلا انا اير بوت مساعد ذكي يفهمك ويوجهك خطوة بخطوة لحل أي مشكلة في جهازك او اي مشاكل فينة",
+        fabImage: "https://files.bpcontent.cloud/2025/07/30/15/20250730152642-M97N6MYG.png",
+        website: { title: "www.egyair.com", link: "www.egyair.com" },
+        email: { title: "it@egyair.com", link: "it@egyair.com" },
+        phone: { title: "467500", link: "467500" },
+        color: "#051b40",
+        variant: "solid",
+        headerVariant: "glass",
+        themeMode: "light",
+        fontFamily: "inter",
+        radius: 4,
+        feedbackEnabled: true,
+        footer: "[⚡ by Botpress](https://botpress.com/?from=webchat)",
+        additionalStylesheetUrl: "https://files.bpcontent.cloud/2025/07/30/15/20250730152943-4J3F4EWT.css",
+        allowFileUpload: false
+      },
+      clientId: "acf2c78a-3371-4ece-9d1b-e264aadca7e5",
+      selector: "#webchat"
+    });
+
+    // ✅ Show chatbot & enable scroll when button clicked
+    document.getElementById('chatNowBtn').addEventListener('click', function () {
+      document.getElementById('webchat-container').style.display = 'block';
+      document.body.style.overflow = 'auto';
+      window.botpress.open();
+      document.getElementById('webchat-container').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // ✅ When Bot is closed
+    window.botpress.on('webchatClosed', () => {
+      document.getElementById('webchat-container').style.display = 'none';
+      document.body.style.overflow = 'hidden';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- ✅ Your custom JS -->
+  <script src="./js/script.js"></script>
+</body>
+</html>
