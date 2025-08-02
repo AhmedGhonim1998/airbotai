@@ -1,0 +1,243 @@
+    :root {
+      --primary-color: #1e3c72;
+      --secondary-color: #2a5298;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+      --info-color: #17a2b8;
+      --light-color: #f8f9fa;
+      --dark-color: #343a40;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #e4e7f1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      min-height: 100vh;
+      text-align: right;
+      direction: rtl;
+      background: radial-gradient(circle at center, #e6f3fc 0%, #c2def3 50%, #a3cde6 100%);
+        background-size: cover;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 1.5rem;
+      border: none;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-header {
+      border-radius: 12px 12px 0 0 !important;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .impact-high { border-right: 5px solid var(--danger-color); background-color: rgba(220, 53, 69, 0.08); }
+    .impact-medium { border-right: 5px solid var(--warning-color); background-color: rgba(255, 193, 7, 0.08); }
+    .impact-low { border-right: 5px solid var(--success-color); background-color: rgba(40, 167, 69, 0.08); }
+    
+    .ticket-item {
+      padding: 1.25rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .ticket-item:hover {
+      background-color: rgba(248, 249, 250, 0.7);
+      transform: translateX(-5px);
+    }
+    
+    .badge-impact {
+      padding: 0.5rem 0.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .badge-high { background-color: var(--danger-color); }
+    .badge-medium { background-color: var(--warning-color); color: var(--dark-color); }
+    .badge-low { background-color: var(--success-color); }
+    
+    .ticket-status {
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+    
+    .status-new { background-color: #e3f2fd; color: #0d6efd; }
+    .status-pending { background-color: #fff8e1; color: #ff9800; }
+    .status-resolved { background-color: #e8f5e9; color: #4caf50; }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(30, 60, 114, 0.2);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #2a5298, #1e3c72);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(30, 60, 114, 0.3);
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .stat-high { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+    .stat-medium { background: linear-gradient(135deg, #ffb347, #ffcc33); }
+    .stat-low { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+    .stat-resolved { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: #6c757d;
+    }
+    
+    .empty-state i {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #dee2e6;
+    }
+    
+    .ticket-details {
+      background: rgba(248, 249, 250, 0.8);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .form-control, .form-select {
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ced4da;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      border-color: #86b7fe;
+    }
+    
+    .ticket-id {
+      font-size: 0.85rem;
+      color: #6c757d;
+      background: rgba(0,0,0,0.05);
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 15px;
+    }
+    
+    .btn-resolve {
+      background: linear-gradient(135deg, var(--success-color), #1e7e34);
+      color: white;
+      border: none;
+    }
+    
+    .btn-resolve:hover {
+      background: linear-gradient(135deg, #1e7e34, var(--success-color));
+      color: white;
+    }
+    
+    .resolved-ticket {
+      opacity: 0.8;
+      background-color: rgba(232, 245, 233, 0.4);
+    }
+    
+    .resolved-ticket .ticket-info h5 {
+      text-decoration: line-through;
+      color: #6c757d;
+    }
+    
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--danger-color);
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 10;
+      border: none;
+    }
+    
+    .ticket-item:hover .delete-btn {
+      opacity: 1;
+    }
+    
+    .delete-btn:hover {
+      background: #b02a37;
+    }
+    
+    @media (max-width: 768px) {
+      .stat-card {
+        margin-bottom: 1rem;
+      }
+      
+      .ticket-item {
+        flex-direction: column;
+      }
+      
+      .ticket-info {
+        margin-bottom: 1rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+    }

@@ -58,7 +58,11 @@
 .hide{
     overflow: hidden;
 }
+.btnBack{
+    color: white;
+    border-radius: 20px;
 
+}
 .navBar {
   height: 40px; /* أو أي ارتفاع يناسبك */
   align-items: center;
