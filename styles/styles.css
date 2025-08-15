@@ -1,9 +1,233 @@
-   html, body {
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
+:root {
+      --egyptair-blue: #1a3854;
+      --egyptair-light: #e6f3fc;
+      --egyptair-accent: #0a7bb8;
+      --egyptair-light-accent: #a3cde6;
+      --transition: all 0.3s ease;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #f0f9ff 0%, #e1f5fe 50%, #d1edfa 100%);
+      background-attachment: fixed;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-link {
+      color: var(--egyptair-blue) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      border-radius: 20px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--egyptair-accent) !important;
+      background-color: rgba(10, 123, 184, 0.1);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: var(--egyptair-accent);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 70%;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: calc(100vh - 60px);
+      padding: 2rem 1rem;
+    }
+
+    .logo {
+      max-width: 100%;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .logo img {
+      max-height: 280px;
+      width: auto;
+      margin: 0 auto;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 2rem auto;
+      color: #444;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .chatBotton {
+      background: linear-gradient(135deg, var(--egyptair-accent), var(--egyptair-blue));
+      border: none;
+      width: 180px;
+      height: 50px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(10, 123, 184, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .chatBotton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(10, 123, 184, 0.4);
+    }
+
+    .chatBotton:active {
+      transform: translateY(1px);
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto 0;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: var(--egyptair-accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      color: var(--egyptair-blue);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .footer {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-logo {
+      max-height: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-icons {
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--egyptair-light-accent);
+      border-radius: 50%;
+      color: var(--egyptair-blue);
+      margin: 0 5px;
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      background-color: var(--egyptair-accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Botpress Webchat Styles - UPDATED */
     #webchat .bpWebchat {
       position: unset;
       width: 100%;
@@ -13,108 +237,94 @@
     }
 
     #webchat .bpFab {
-      display: none;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      display: none !important;
     }
 
     #webchat-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100vh;
-      margin-top: 50px;
-      display: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
       padding: 1rem;
+    }
+
+    #webchat-container.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     #webchat {
       width: 100%;
       max-width: 700px;
       height: 600px;
-      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    #webchat-container.active #webchat {
+      transform: translateY(0);
+    }
+
+    .close-chat {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .close-chat:hover {
+      background: var(--egyptair-accent);
+      color: white;
+      transform: rotate(90deg);
     }
 
     @media (max-width: 768px) {
       #webchat {
         width: 100% !important;
-        height: 90vh !important;
+        height: 85vh !important;
       }
-
+      
       .navbar-brand img {
         max-height: 50px;
       }
+      
+      .description {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+      }
+      
+      .feature-card {
+        max-width: 100%;
+      }
+      
+      .logo img {
+        max-height: 220px;
+      }
     }
 
-
-.chatBotton{
-    background-color: #1a3854;
-    border: none;
-    width: 150px;
-    height: 40px;
-    border-radius: 20px;
-    margin-top: 5%;
-}
-.hide{
-    overflow: hidden;
-}
-.btnBack{
-    color: white;
-    border-radius: 20px;
-
-}
-.navBar {
-  height: 40px; /* أو أي ارتفاع يناسبك */
-  align-items: center;
-}
-
-body{
-        margin: 0;
-        
-        background: radial-gradient(circle at center, #e6f3fc 0%, #c2def3 50%, #a3cde6 100%);
-        background-size: cover;
-        
-}
-
-.no-bullets {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-ul{
-    cursor: pointer;
-}
-.egyAir{
-    width: 35%;
-}
-.logo {
-  max-height: 400px;
-  width: auto;
-  display: block;
-  line-height: 1;
-  margin-top: -5%;
-}
-.bot{
-    max-height: 400x !important;
-    
-}
-
-
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: auto; /* بدلاً من 80vh */
-  min-height: 60vh; /* أو أقل حسب ما تحب */
-}
-.description{
-    font-weight: 700;
-    font-size: large;
-}
-
-.bp-widget-button {
-    display: none !important;
-  }
-
+    .bp-widget-button {
+      display: none !important;
+    }
