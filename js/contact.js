@@ -207,9 +207,7 @@
                 <i class="fas fa-trash me-1"></i>حذف التذكرة
               </button>
               ${ticket.status !== 'resolved' ? `
-                <button class="btn btn-sm btn-outline-primary update-status" data-id="${ticket.id}" data-status="review">
-                  <i class="fas fa-arrow-right me-1"></i>تحويل للمراجعة
-                </button>
+                
                 
                 <button class="btn btn-sm btn-resolve update-status" data-id="${ticket.id}" data-status="resolved">
                   <i class="fas fa-check-circle me-1"></i>تم الحل
@@ -475,3 +473,93 @@
         renderTickets();
       }
     });
+
+
+
+  
+  // ... الكود الحالي ...
+
+  // ===== إضافة جديدة: نظام التزامن مع تحديثات فريق الدعم =====
+  
+  // دالة للتحقق من تحديثات التذاكر
+  function checkForTicketUpdates() {
+    const lastUpdate = localStorage.getItem('ticketsUpdated');
+    const now = Date.now();
+    
+    // إذا مر أكثر من 30 ثانية منذ آخر تحقق
+    if (!lastUpdate || now - lastUpdate > 30000) {
+      localStorage.setItem('ticketsUpdated', now);
+      
+      // إعادة تحميل التذاكر من localStorage
+      const updatedTickets = JSON.parse(localStorage.getItem('supportTickets')) || [];
+      const currentTickets = loadTickets();
+      
+      // التحقق إذا كان هناك تغيير في التذاكر
+      if (JSON.stringify(updatedTickets) !== JSON.stringify(currentTickets)) {
+        // حفظ التذاكر المحدثة
+        localStorage.setItem('supportTickets', JSON.stringify(updatedTickets));
+        
+        // إعادة عرض التذاكر
+        renderTickets();
+        
+        // إظهار إشعار للمستخدم
+        showNotification('تم تحديث حالة تذكرتك من قبل فريق الدعم!');
+      }
+    }
+  }
+  
+  // دالة لعرض إشعار للمستخدم
+  function showNotification(message) {
+    // إنشاء عنصر الإشعار إذا لم يكن موجوداً
+    if (!document.getElementById('updateNotification')) {
+      const notification = document.createElement('div');
+      notification.id = 'updateNotification';
+      notification.style.position = 'fixed';
+      notification.style.top = '20px';
+      notification.style.right = '20px';
+      notification.style.padding = '15px 25px';
+      notification.style.backgroundColor = '#0f9d58';
+      notification.style.color = 'white';
+      notification.style.borderRadius = '10px';
+      notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+      notification.style.zIndex = '10000';
+      notification.style.transform = 'translateX(120%)';
+      notification.style.transition = 'transform 0.4s ease';
+      notification.innerHTML = `
+        <i class="fas fa-check-circle me-2"></i>
+        <span>${message}</span>
+      `;
+      document.body.appendChild(notification);
+    }
+    
+    const notification = document.getElementById('updateNotification');
+    notification.querySelector('span').textContent = message;
+    
+    // إظهار الإشعار
+    setTimeout(() => {
+      notification.style.transform = 'translateX(0)';
+      
+      // إخفاء الإشعار بعد 3 ثواني
+      setTimeout(() => {
+        notification.style.transform = 'translateX(120%)';
+      }, 3000);
+    }, 100);
+  }
+  
+  // التحقق من التحديثات كل 5 ثواني
+  setInterval(checkForTicketUpdates, 5000);
+  
+  // التحقق من التحديثات عند تحميل الصفحة
+  window.addEventListener('load', checkForTicketUpdates);
+  
+  // ===== نهاية الإضافة الجديدة =====
+  
+  // Initialize the page
+  document.addEventListener('DOMContentLoaded', function() {
+    // Detect device info
+    detectDeviceInfo();
+    
+    renderTickets();
+    
+    // ... بقية الكود الحالي ...
+  });

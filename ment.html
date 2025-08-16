@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم فريق الدعم الفني</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="./images/icon.png" type="image/png">
+    <link rel="stylesheet" href="./styles/ment.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-headset"></i>
+        <span>لوحة تحكم فريق الدعم الفني</span>
+      </a>
+      <div class="agent-info">
+        <div class="agent-name">أحمد محمد</div>
+        <div class="agent-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Dashboard Layout -->
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="nav-title">القائمة الرئيسية</div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">
+          <i class="fas fa-ticket-alt"></i>
+          <span>التذاكر المفتوحة</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fas fa-clipboard-check"></i>
+          <span>التذاكر المغلقة</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fas fa-chart-line"></i>
+          <span>الإحصائيات</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fas fa-users"></i>
+          <span>العملاء</span>
+        </a>
+      </div>
+      
+      <div class="nav-title">الإعدادات</div>
+      <div class="nav-links">
+        <a href="#" class="nav-link">
+          <i class="fas fa-cog"></i>
+          <span>الإعدادات</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fas fa-question-circle"></i>
+          <span>المساعدة</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>تسجيل الخروج</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Statistics -->
+      <div class="row mb-4 fade-in">
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="stat-card stat-new">
+            <div class="stat-icon">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="stat-number" id="newCount">0</div>
+            <div>تذاكر جديدة</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="stat-card stat-pending" style="animation-delay: 0.1s;">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-number" id="pendingCount">0</div>
+            <div>قيد المراجعة</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="stat-card stat-inprogress" style="animation-delay: 0.2s;">
+            <div class="stat-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <div class="stat-number" id="progressCount">0</div>
+            <div>قيد التنفيذ</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="stat-card stat-resolved" style="animation-delay: 0.3s;">
+            <div class="stat-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-number" id="resolvedCount">0</div>
+            <div>تم حلها</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Filters and Search -->
+      <div class="card mb-4 fade-in" style="animation-delay: 0.4s;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="ticketSearch" class="form-label">بحث في التذاكر</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="ticketSearch" placeholder="ابحث في التذاكر...">
+                <button class="btn btn-outline-primary" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="statusFilter" class="form-label">حالة التذكرة</label>
+              <select class="form-select" id="statusFilter">
+                <option value="">جميع الحالات</option>
+                <option value="new">جديدة</option>
+                <option value="pending">قيد المراجعة</option>
+                <option value="in_progress">قيد التنفيذ</option>
+                <option value="resolved">تم الحل</option>
+              </select>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="priorityFilter" class="form-label">أولوية التذكرة</label>
+              <select class="form-select" id="priorityFilter">
+                <option value="">جميع الأولويات</option>
+                <option value="High">عاجلة</option>
+                <option value="Medium">متوسطة</option>
+                <option value="Low">بسيطة</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tickets List -->
+      <div class="card fade-in" style="animation-delay: 0.5s;">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="fas fa-tasks me-2"></i>التذاكر المفتوحة</span>
+          <div>
+            <button class="btn btn-sm btn-light" id="refreshTickets">
+              <i class="fas fa-sync-alt me-1"></i> تحديث
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>رقم التذكرة</th>
+                  <th>العميل</th>
+                  <th>العنوان</th>
+                  <th>النوع</th>
+                  <th>الأولوية</th>
+                  <th>الحالة</th>
+                  <th>التاريخ</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="ticketsList">
+                <!-- Tickets will be loaded here dynamically -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="empty-state text-center p-5 d-none" id="emptyState">
+            <i class="fas fa-inbox fa-3x mb-3 text-muted"></i>
+            <h5>لا توجد تذاكر مفتوحة</h5>
+            <p class="text-muted">لا توجد تذاكر تحتاج إلى معالجة حالياً.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Details Modal -->
+  <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ticketModalTitle">تفاصيل التذكرة</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="ticketModalBody">
+          <!-- Ticket details will be loaded here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+          <button type="button" class="btn btn-primary" id="saveTicketBtn">حفظ التغييرات</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    
+  </script>
+
+  <script src="./js/ment.js"></script>
+</body>
+</html>
