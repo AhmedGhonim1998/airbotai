@@ -62,7 +62,7 @@
         const matchesStatus = statusFilter ? ticket.status === statusFilter : true;
         const matchesPriority = priorityFilter ? ticket.impact === priorityFilter : true;
         const matchesSearch = searchTerm ? 
-          ticket.title.toLowerCase().includes(searchTerm) || 
+          ticket.id.toLowerCase().includes(searchTerm) || 
           ticket.issue.toLowerCase().includes(searchTerm) : true;
         
         return matchesStatus && matchesPriority && matchesSearch;
